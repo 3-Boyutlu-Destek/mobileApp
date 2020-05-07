@@ -1,11 +1,12 @@
-import {create} from 'apisauce';
-import {BASE_URL} from '../../Config';
+import { create } from 'apisauce';
+import { BASE_URL } from '../../Config';
 import apiMonitor from './Monitor';
 //import setInterceptor from './Interceptor';
 
 export const URIS = {
   VERSION: 'app/version',
-  LOGIN: 'login',
+  LOGIN: '/account/login/',
+  CREATE: '/account/create/',
   REFRESH: 'refresh',
   LOGOUT: 'logout',
 };
@@ -28,15 +29,21 @@ const createApiClient = (baseURL = BASE_URL) => {
   const setAuthorizationHeader = access_token =>
     api.setHeader('Authorization', 'Bearer ' + access_token);
 
-  const loginUser = payload => api.post(URIS.LOGIN, payload);
+  const loginUser = payload => {
+    api.post(URIS.LOGIN, payload)
+  };
 
+  const createUser = payload => {
+    api.post(URIS.CREATE, payload)
+  };
   //kickoff our api functions
   return {
     // client modifiers
     setAuthorizationHeader,
     // checkAppVersion,
     loginUser,
+    createUser
   };
 };
 
-export default {createApiClient};
+export default { createApiClient };

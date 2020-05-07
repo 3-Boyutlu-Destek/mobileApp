@@ -23,13 +23,22 @@ const checkLogin = thunk(async (actions, payload, { dispatch, injections }) => {
 		actions.changeAppState(APP_STATE.PUBLIC);
 	}
 });
+/**
+ * Fields
+• email (string, max: 32, required)
+• username (string, max: 64)
+• first_name (string, max: 32, required) • last_name (string, max: 32, required) • role (integer, default: 1)
+– PRODUCER: 1 – TRANSPORT: 2 – MEDICAL: 3
+• phone (string, max: 13, required)
+• city (integer, required, see cities.csv)
+ */
+const createUser = thunk(async (actions, payload, { dispatch }) => {
 
-const loginUser = thunk(async (actions, payload, { dispatch }) => {
-	if (!payload.email || !payload.password) {
-		return;
+	if (!payload.email || !payload.password || !payload.username || !payload.first_name || !payload.role || !payload.phone || !payload.city) {
+	//	return;
 	}
 	actions.updateStatus(STATUS.FETCHING);
-	 let response = await ApiService.loginUser(payload);
+	 let response = await ApiService.createUser(payload);
 
 /*	let response = await setLoginCredentials(
 		payload.username,
@@ -51,12 +60,12 @@ const loginUser = thunk(async (actions, payload, { dispatch }) => {
 	 	dispatch.user.requestUserProfile();
 });
 
-const LoginModel = {
+const CreateUser = {
 	//include BaseModel
 	...BaseModel(),
 	//include all thunks or actions defined separately
-	loginUser,
-	checkLogin,
+    checkLogin,
+    createUser,
 	appstate: APP_STATE.UNKNOWN,
 	changeAppState: action((state, payload) => {
 		state.appstate = payload;
@@ -66,4 +75,4 @@ const LoginModel = {
 	})
 };
 
-export default LoginModel;
+export default CreateUser;

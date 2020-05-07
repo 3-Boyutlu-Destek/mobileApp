@@ -10,12 +10,13 @@ import useTranslation from '../../i18n/index';
 import {LOCALES} from '../../Constants/index';
 import colors from '../../Themes/Colors';
 
+
 const LanguageSlideItem = props => {
   const {t, localeProvider, changeLocale} = useTranslation();
 
   const _changeLocale = () => {
     changeLocale(
-      localeProvider.id == LOCALES.HINDI.id ? LOCALES.ENGLISH : LOCALES.HINDI,
+      localeProvider.id == LOCALES.TURKISH.id ? LOCALES.ENGLISH : LOCALES.TURKISH,
     );
   };
 
@@ -39,36 +40,32 @@ const LanguageSlideItem = props => {
   );
 };
 
-const slides = [
+
+const slides =
+[
   {
     key: 'Loren Ipsum...',
-    title: 'slide 1',
-    text: 'something cool text.',
-    // renderExtra: LanguageSlideItem,
-    backgroundColor: colors.blueJeans,
+    title: "Sağlık Çalışanları",
+    text: "Covid-19 pandemisi ile ön saflarda cesurca mücadele eden sağlık çalışanlarımızın virüsten korunmaları için bazı koruyucu ekipmanlara ekstra olarak ihtiyaçları olduğunu farkettik.",
+    image:require('../../Assets/img/doktorlar.png'),
+    backgroundColor: colors.red100,
   },
   {
     key: 'bla bla -dos',
-    title: 'slide2',
-    text: 'Other cool stuff',
-    backgroundColor: colors.pineapple,
+    image:require('../../Assets/img/doktorlar.png'),
+    title: '3 Boyutlu Yazıcı Sahipleri',
+    text: 'Küçük bir ekiple hızlıca aksiyon alarak Türkiye genelindeki gönüllü 3 boyutlu yazıcı sahiplerini birleştirebileceğimiz 3 Boyutlu Destek organizasyonunu kurduk. Ardından hızlıca üretime başladık.',
+    backgroundColor: colors.white,
   },
 
   {
     key: 'There is more-dos',
-    title: 'slide 3',
-    text: 'Other cool stuff',
-    backgroundColor: colors.mystic,
-  },
-  {
-    key: 'And some final notes',
-    title: 'FINAL SLIDE',
-    text: "I'm already out of descriptions\n\nLorem ipsum bla bla bla",
-    //   image: require('./assets/3.jpg'),
-    backgroundColor: colors.androidGreen,
-  },
+    image:require('../../Assets/img/doktorlar.png'),
+    title: 'Gönüllü Teslimatçılar',
+    text: 'Kısa bir sürede hızlıca büyüyen 3 Boyutlu Destek Organizasyonuna gönüllü teslimatçı arkadaşlarımızın da katılması ile organizasyonumuz daha da güçlendi. Türkiye Motosiklet Platformuna katkılarından dolayı teşekkür ederiz.\nFakat, halen sana ihtiyacımız var! :)',
+    backgroundColor: colors.white,
+  }
 ];
-
 const AppIntro = props => {
   const _onDone = () => {
     console.log('done');

@@ -12,10 +12,11 @@ export const useAppContext = () => {
 };
 
 export const AppContextProvider = props => {
-  const {loginUser, setState, checkLogin} = useStoreActions(actions => ({
+  const {loginUser, setState, checkLogin,createUser} = useStoreActions(actions => ({
     loginUser: actions.login.loginUser,
     setState: actions.login.changeAppState,
     checkLogin: actions.login.checkLogin,
+    createUser: actions.create.createUser
   }));
   useCheckVersion();
   const state = useStoreState(store => store.login.appstate);
@@ -46,11 +47,19 @@ export const AppContextProvider = props => {
   }, [_logoutUser]);
 
   const login = useCallback(
+   
     reqData => {
       loginUser(reqData);
     },
     [loginUser],
   );
+
+  const userCreate = useCallback(
+    reqData => {
+      createUser(reqData);
+    },
+    [createUser],
+  )
 
   // check loggedin on mount
   useEffect(() => {
@@ -63,6 +72,7 @@ export const AppContextProvider = props => {
         state,
         logout,
         login,
+        userCreate
       }}>
       {props.children}
     </AppStateContext.Provider>

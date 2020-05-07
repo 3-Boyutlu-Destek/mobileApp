@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 		alignItems: "center"
 	},
 	text: {
-		color: "rgba(255, 255, 255, .7)",
+		color: "#8e8e8e",
 		fontSize: 16,
 		width,
 		textAlign: "center",
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		fontSize: 26,
-		color: "rgba(255, 255, 255, .7)",
+		color: "#002d44",
 		fontWeight: "300",
 		width,
 		textAlign: "center",

@@ -1,12 +1,12 @@
 {
-    "welcome": "React-Native Easy-Starter",
-    "home": "HOME",
-    "notifications": "NOTIFICATIONS",
-    "change_locale": "CHANGE LOCALE",
-    "logout": "LOGOUT",
-    "login": "LOGIN",
-    "signup":"SIGN UP",
-    "selectLanguage": "Select Your Language",
+    "welcome": "React Native Easy Starter",
+    "home": "Ana menü",
+    "notifications": "Bildirimler",
+    "change_locale": "Dil değiştir",
+    "logout": "Çıkış yap",
+    "login": "Giriş yap",
+    "signup":"KAYIT OL",
+    "selectLanguage": "Dil seç",
     "intro1Title": "Sağlık Çalışanları",
     "intro1Desc": "Covid-19 pandemisi ile ön saflarda cesurca mücadele eden sağlık çalışanlarımızın virüsten korunmaları için bazı koruyucu ekipmanlara ekstra olarak ihtiyaçları olduğunu farkettik."
 }

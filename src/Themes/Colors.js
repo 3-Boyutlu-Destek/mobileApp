@@ -7,6 +7,8 @@ const colors = {
   transparentBlack: 'rgba(0,0,0, 0.6)',
   transparentBlackHard: 'rgba(0,0,0, 0.9)',
 
+  brightblue:"#0974ff",
+
   //bg
   gainsboro: '#E2DCDE',
   issabeline: '#EDEAEA', //active

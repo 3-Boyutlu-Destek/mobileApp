@@ -11,7 +11,7 @@ import {
 	I18nManager
 } from "react-native";
 import DefaultSlide from "./DefaultSlide";
-
+import { IconX, ICON_TYPE } from '../../Icons';
 const { width, height } = Dimensions.get("window");
 
 const isIphoneX =
@@ -25,7 +25,7 @@ const isAndroidRTL = I18nManager.isRTL && Platform.OS === "android";
 export default class AppIntroSlider extends React.Component {
 	static defaultProps = {
 		activeDotStyle: {
-			backgroundColor: "rgba(255, 255, 255, .9)"
+			backgroundColor: "rgba(9, 116, 255, 1)"
 		},
 		dotStyle: {
 			backgroundColor: "rgba(0, 0, 0, .2)"
@@ -87,11 +87,11 @@ export default class AppIntroSlider extends React.Component {
 				{this.props.renderItem ? (
 					this.props.renderItem(props)
 				) : (
-					<DefaultSlide
-						bottomButton={this.props.bottomButton}
-						{...props}
-					/>
-				)}
+						<DefaultSlide
+							bottomButton={this.props.bottomButton}
+							{...props}
+						/>
+					)}
 			</View>
 		);
 	};
@@ -105,19 +105,16 @@ export default class AppIntroSlider extends React.Component {
 	};
 
 	_renderDefaultButton = name => {
-		let content = (
-			<Text style={[styles.buttonText, this.props.buttonTextStyle]}>
-				{this.props[`${name.toLowerCase()}Label`]}
-			</Text>
-		);
+		let content = null
+		if (name == "Next")
+		
+			content = (<IconX name={"arrow-right"} origin={ICON_TYPE.MATERIAL_COMMUNITY} color={'white'} size={36} style={{alignSelf:"center"}} />)
+		else content = (<IconX name={"check"} origin={ICON_TYPE.MATERIAL_ICONS} color={'white'} size={36} style={{alignSelf:"center"}} />)
 		if (this.props.bottomButton) {
 			content = (
 				<View
 					style={[
 						styles.bottomButton,
-						(name === "Skip" || name === "Prev") && {
-							backgroundColor: "transparent"
-						},
 						this.props.buttonStyle
 					]}
 				>
@@ -138,9 +135,7 @@ export default class AppIntroSlider extends React.Component {
 				<TouchableOpacity
 					onPress={onPress}
 					style={
-						this.props.bottomButton
-							? styles.flexOne
-							: this.props.buttonStyle
+						this.props.buttonStyle
 					}
 				>
 					{content}
@@ -188,7 +183,7 @@ export default class AppIntroSlider extends React.Component {
 								style={[
 									styles.dot,
 									this._rtlSafeIndex(i) ===
-									this.state.activeIndex
+										this.state.activeIndex
 										? this.props.activeDotStyle
 										: this.props.dotStyle
 								]}
@@ -197,7 +192,7 @@ export default class AppIntroSlider extends React.Component {
 						))}
 				</View>
 				{btn}
-				{skipBtn}
+				{/*skipBtn*/}
 			</View>
 		);
 	};
@@ -296,15 +291,19 @@ const styles = StyleSheet.create({
 	paginationDots: {
 		height: 16,
 		margin: 16,
+
 		flexDirection: isAndroidRTL ? "row-reverse" : "row",
-		justifyContent: "center",
-		alignItems: "center"
+		justifyContent: "flex-start",
+		alignItems: "flex-start"
 	},
 	dot: {
-		width: 10,
+		width: 32,
 		height: 10,
 		borderRadius: 5,
-		marginHorizontal: 4
+		marginHorizontal: 4,
+		alignSelf: "flex-start",
+		backgroundColor: "yellow",
+		justifyContent: "flex-start"
 	},
 	leftButtonContainer: {
 		position: "absolute",
@@ -312,11 +311,18 @@ const styles = StyleSheet.create({
 	},
 	rightButtonContainer: {
 		position: "absolute",
-		right: 0
+		right: 20,
+		backgroundColor: "#0974ff",
+		width: 46,
+		height: 46,
+		borderRadius: 23,
+		alignContent:"center",
+		justifyContent:"center"
 	},
 	bottomButton: {
 		flex: 1,
-		backgroundColor: "rgba(0, 0, 0, .3)",
+		backgroundColor: "#0974ff",
+		alignSelf:"center",
 		alignItems: "center",
 		justifyContent: "center"
 	},
